@@ -36,7 +36,7 @@ button{
 }
 
 .slidecontainer {
-    width: 60%; /* Width of the outside container */
+    width: 100%; /* Width of the outside container */
 }
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
