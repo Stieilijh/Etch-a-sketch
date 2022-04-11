@@ -6,7 +6,7 @@
     background-color: white;
     border: solid black 4px;
     margin-top:2%;
-    margin-left:15%;
+    margin-left:33%;
     margin-bottom:2%;
 }
 .cell {
@@ -18,7 +18,7 @@
     padding: 0;
 }
 h1{
-    margin-left: 17%;
+    margin-left: 36%;
     margin-top:2%;
 }
 button{
@@ -27,6 +27,9 @@ button{
     padding: 16px;
     color:white;
     background-color: blue;
+}
+button:hover{
+filter: contrast(85%);
 }
 #buttons-container{
     display: flex;
@@ -65,4 +68,4 @@ button{
     height: 25px; /* Slider handle height */
     background: #04AA6D; /* Green background */
     cursor: pointer; /* Cursor on hover */
-  }
+}
