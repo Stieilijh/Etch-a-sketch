@@ -8,7 +8,7 @@ window.onload=function(){
     let size = slider.value;
 
     makeGrid(grid,color,size);
-    
+    //inverse button
     const invbtn = document.querySelector("#inverse");
     invbtn.addEventListener("click",()=>{
         if(eraseBool)eraseBool=!eraseBool;
@@ -21,6 +21,7 @@ window.onload=function(){
         grid.style.backgroundColor=invColor;
         makeGrid(grid,color,size);
     });
+    //eraser button
     const eraser = document.querySelector("#eraser");
     eraser.addEventListener("click",()=>{
         eraseBool=!eraseBool;
@@ -37,14 +38,32 @@ window.onload=function(){
             });
         });
     });
-
+    //clear button
     const clearbtn = document.querySelector("#clear");
     clearbtn.addEventListener("click",
     ()=>{
         const tiles = document.querySelectorAll(".cell");
         tiles.forEach((tile)=>tile.style.backgroundColor=invColor);
     });
-
+    //rainbow button
+    const rainbowbtn=document.querySelector("#rainbow");
+    rainbowbtn.addEventListener("click",()=>{
+        if(eraseBool)eraseBool=!eraseBool;
+        changeEraserColor(eraseBool);
+    });
+    //default button 
+    const defaultbtn = document.querySelector("#default");
+    defaultbtn.addEventListener("click",()=>{
+        if(eraseBool)eraseBool=!eraseBool;
+        changeEraserColor(eraseBool);
+        color="black";
+        invColor="white";
+        tempColor=color;
+        const tiles = document.querySelectorAll(".cell");
+        grid.style.backgroundColor=invColor;
+        makeGrid(grid,color,size);
+    });
+    //slider
     slider.oninput = function() {
         if(eraseBool)eraseBool=!eraseBool;
         changeEraserColor(eraseBool);
@@ -55,7 +74,6 @@ window.onload=function(){
     
 
 };
-
 function makeGrid(grid,color,size){
     clearAll();
     grid.style.setProperty("--n", size);
