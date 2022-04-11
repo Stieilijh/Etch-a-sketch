@@ -3,6 +3,7 @@ window.onload=function(){
     let color="black";
     let invColor="white"; 
     let tempColor=color;
+    let eraseBool=false;
     const slider = document.getElementById("myRange");
     let size = slider.value;
 
@@ -10,6 +11,8 @@ window.onload=function(){
     
     const invbtn = document.querySelector("#inverse");
     invbtn.addEventListener("click",()=>{
+        if(eraseBool)eraseBool=!eraseBool;
+        changeEraserColor(eraseBool);
         if(color==invColor)color=tempColor;
         let temp=color;
         color=invColor;
@@ -20,6 +23,8 @@ window.onload=function(){
     });
     const eraser = document.querySelector("#eraser");
     eraser.addEventListener("click",()=>{
+        eraseBool=!eraseBool;
+        changeEraserColor(eraseBool);
         if(color==invColor){
             color=tempColor; 
         }else{
@@ -41,6 +46,8 @@ window.onload=function(){
     });
 
     slider.oninput = function() {
+        if(eraseBool)eraseBool=!eraseBool;
+        changeEraserColor(eraseBool);
         size=slider.value;
         if(color==invColor)color=tempColor;
         makeGrid(grid,color,size);
@@ -70,4 +77,13 @@ function clearAll(){
             e.removeChild(child);
             child = e.lastElementChild;
         }
+}
+
+function changeEraserColor(eraseBool){
+    let eraser = document.querySelector("#eraser");
+    if(eraseBool){
+        eraser.style.backgroundColor="red";
+    }else {
+        eraser.style.backgroundColor="blue";
+    }
 }
