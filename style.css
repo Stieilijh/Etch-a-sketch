@@ -6,7 +6,7 @@
     background-color: white;
     border: solid black 4px;
     margin-top:2%;
-    margin-left:33%;
+    margin-left:15%;
     margin-bottom:2%;
 }
 .cell {
@@ -18,7 +18,7 @@
     padding: 0;
 }
 h1{
-    margin-left: 38%;
+    margin-left: 17%;
     margin-top:2%;
 }
 button{
@@ -36,7 +36,7 @@ button{
 }
 
 .slidecontainer {
-    width: 100%; /* Width of the outside container */
+    width: 60%; /* Width of the outside container */
 }
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
