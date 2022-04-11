@@ -2,6 +2,7 @@ window.onload=function(){
     let grid = document.querySelector("#grid");
     let color="black";
     let invColor="white"; 
+    let tempColor=color;
     const slider = document.getElementById("myRange");
     let size = slider.value;
 
@@ -9,11 +10,27 @@ window.onload=function(){
     
     const invbtn = document.querySelector("#inverse");
     invbtn.addEventListener("click",()=>{
+        if(color==invColor)color=tempColor;
         let temp=color;
         color=invColor;
         invColor=temp;
+        tempColor=color;
         grid.style.backgroundColor=invColor;
         makeGrid(grid,color,size);
+    });
+    const eraser = document.querySelector("#eraser");
+    eraser.addEventListener("click",()=>{
+        if(color==invColor){
+            color=tempColor; 
+        }else{
+            color=invColor;
+        }
+        const tiles = document.querySelectorAll(".cell");
+        tiles.forEach((tile)=>{
+            tile.addEventListener("mouseover",(e)=>{
+                e.target.style.backgroundColor=color;
+            });
+        });
     });
 
     const clearbtn = document.querySelector("#clear");
@@ -25,6 +42,7 @@ window.onload=function(){
 
     slider.oninput = function() {
         size=slider.value;
+        if(color==invColor)color=tempColor;
         makeGrid(grid,color,size);
     }
     
