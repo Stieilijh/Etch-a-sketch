@@ -11,8 +11,14 @@ window.onload=function(){
     //inverse button
     const invbtn = document.querySelector("#inverse");
     invbtn.addEventListener("click",()=>{
+        //back to defaults
         if(eraseBool)eraseBool=!eraseBool;
         changeEraserColor(eraseBool);
+        color="black";
+        invColor="white";
+        tempColor=color;
+        grid.style.backgroundColor=invColor;
+        // to change
         if(color==invColor)color=tempColor;
         let temp=color;
         color=invColor;
@@ -45,11 +51,19 @@ window.onload=function(){
         const tiles = document.querySelectorAll(".cell");
         tiles.forEach((tile)=>tile.style.backgroundColor=invColor);
     });
-    //rainbow button
-    const rainbowbtn=document.querySelector("#rainbow");
-    rainbowbtn.addEventListener("click",()=>{
+    //random button
+    const randombtn=document.querySelector("#random");
+    randombtn.addEventListener("click",()=>{
         if(eraseBool)eraseBool=!eraseBool;
         changeEraserColor(eraseBool);
+        color="black";
+        invColor="white";
+        tempColor=color;
+        grid.style.backgroundColor=invColor;
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        color="#"+randomColor;
+        tempColor=color;
+        makeGrid(grid,color,size);
     });
     //default button 
     const defaultbtn = document.querySelector("#default");
@@ -59,7 +73,6 @@ window.onload=function(){
         color="black";
         invColor="white";
         tempColor=color;
-        const tiles = document.querySelectorAll(".cell");
         grid.style.backgroundColor=invColor;
         makeGrid(grid,color,size);
     });
@@ -71,7 +84,23 @@ window.onload=function(){
         if(color==invColor)color=tempColor;
         makeGrid(grid,color,size);
     }
-    
+    //color picker
+    const colorPicker = document.querySelector("#colorPicker");
+    colorPicker.addEventListener("change",(e)=>{
+        //back to default
+        if(eraseBool)eraseBool=!eraseBool;
+        changeEraserColor(eraseBool);
+        color="black";
+        invColor="white";
+        tempColor=color;
+        grid.style.backgroundColor=invColor;
+        //now to change
+        color=e.target.value;
+        invColor="white";
+        tempColor=color;
+        grid.style.backgroundColor=invColor;
+        makeGrid(grid,color,size)
+    });    
 
 };
 function makeGrid(grid,color,size){
